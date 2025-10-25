@@ -1,3 +1,188 @@
+<!-- CSS for Navigation (Add to <head> section) -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --primary: #6366f1;
+        --secondary: #8b5cf6;
+        --text: #1e293b;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* Navigation */
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+    }
+
+    .logo {
+        font-size: 1.5em;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-decoration: none;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 40px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 600;
+        font-size: 0.95em;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+    }
+
+    .menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background: var(--text);
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .menu-toggle {
+            display: flex;
+        }
+
+        .nav-links {
+            position: fixed;
+            top: 70px;
+            left: -100%;
+            width: 100%;
+            background: white;
+            flex-direction: column;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            gap: 20px;
+        }
+
+        .nav-links.active {
+            left: 0;
+        }
+    }
+
+    /* Add padding to body content to prevent overlap with fixed nav */
+    body {
+        padding-top: 70px;
+    }
+</style>
+
+<!-- HTML Navigation (Add after <body> tag) -->
+<nav id="navbar">
+    <div class="nav-container">
+        <a href="https://rubayet123.github.io/" class="logo">Your Name</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="https://rubayet123.github.io/#home">Home</a></li>
+            <li><a href="https://rubayet123.github.io/#about">About</a></li>
+            <li><a href="https://rubayet123.github.io/projects.html">Projects</a></li>
+            <li><a href="https://rubayet123.github.io/#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- JavaScript for Navigation (Add before </body> tag) -->
+<script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Highlight active page
+    const currentPage = window.location.pathname;
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        if (link.getAttribute('href').includes(currentPage) && currentPage !== '/') {
+            link.classList.add('active');
+        }
+    });
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
