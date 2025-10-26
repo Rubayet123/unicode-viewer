@@ -90,24 +90,30 @@ Your text **never leaves your browser**.
 ```bash
 git clone https://github.com/Rubayet123/unicode-viewer.git
 cd unicode-viewer
-
+```
 
 ---
+
 ## Contributing
+
 Contributions are welcome! Feel free to:
 
 - Report bugs
-- Suggest features
+- Suggest new features
 - Improve UI/UX
-- Add new character visualizations
+- Add suport for more character visualizations
 
-Please open an issue first for major changes.
+**Please open an issue first** for major changes or new features.
 
 ---
+
 ## Author
-Rubayet
-GitHub Profile [https://rubayet123.github.io/](https://rubayet123.github.io/)
+
+**Rubayet**  
+[GitHub Profile](https://github.com/Rubayet123) · [Personal Site](https://rubayet123.github.io/)
 
 ---
+
 ## License
-This project is licensed under the MIT License – see LICENSE for details.
+
+This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
